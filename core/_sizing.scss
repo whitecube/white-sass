@@ -1,0 +1,11 @@
+/* - s($goal:number,[$parent:number])
+**********************************************************
+ $parent default : false
+ Computes em sizes from pixel-based numbers
+**********************************************************
+*/
+@function s($goal,$parent:false){
+    @if $parent { $denom: $parent; }
+    @else { $denom: $baseFontSize; }
+    @return ($goal / $denom * 1em);
+}

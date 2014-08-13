@@ -1,0 +1,36 @@
+/* - @include hidden()
+**********************************************************
+ Hides an element but keeps it usable by Screen-readers
+**********************************************************
+*/
+
+@mixin hidden(){
+    position: absolute;
+    top: -99999px;
+    left: -99999px;
+}
+
+/* - @include clearfix([both|left|right])
+**********************************************************
+ Default : both
+ Reset float on parent-element of floated elements
+**********************************************************
+*/
+@mixin clearfix( $w:both ){
+    &:after{
+        content: "";
+        display: block;
+        clear: $w;
+    }
+}
+
+/* - @include resetFW()
+**********************************************************
+ cleares width and float on element.
+ Usefull on responsive designs
+**********************************************************
+*/
+@mixin resetFW(){
+    width: auto;
+    float: none;
+}

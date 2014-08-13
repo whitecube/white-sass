@@ -1,0 +1,12 @@
+// FONTS & FONT SIZES
+$baseFontSize: 16;
+
+// GRIDZ & WIDTHZ
+    // Following params have to be in same unit. Can be px, em or rem.
+$baseWidth: 1024px;
+$gutterWidth: 40px;
+    // colCount: number of columns (without units)
+$colCount: 12;
+
+// SPRITES
+$icons: sprite-map("sprite/*.png", $layout: smart);

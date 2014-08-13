@@ -1,0 +1,10 @@
+@mixin set_sprite($sprite) {
+    background: sprite-url($icons);
+    background-position: sprite-position($icons, $sprite);
+    background-repeat: no-repeat;
+    display: block;
+    height: image-height(sprite-file($icons, $sprite));
+    width: image-width(sprite-file($icons, $sprite));
+    text-indent: -9999px;
+    overflow: hidden;
+}

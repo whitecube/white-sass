@@ -1,0 +1,45 @@
+/* - @include triangle($color:color, $lengthX:[px|em|rem], $lengthY:[px|em|rem], $direction:[bottom|top|left|right], $position:css-list, $pseudoElement:[after|before])
+**********************************************************
+ creates triangle element on pseudo element (before/after)
+ in all directions (left/right/top/left, positions
+ and sizes.
+**********************************************************
+*/
+@mixin triangle( $color, $lengthX: 10px, $lengthY: 10px, $direction: bottom, $position: ( bottom 0, left 50% ), $pseudoElement: after ){
+    &:#{$pseudoElement}{
+        content: '';
+        width: 0;
+        height: 0;
+        position: absolute;
+        z-index: 99;
+
+        @each $prop in $position{
+            #{unquote(nth($prop, 1))}: #{unquote(nth($prop, 2))};
+        }
+
+        @if unquote( $direction ) == bottom{
+            border-top: ( $lengthY / 2 ) solid $color;
+            border-right: ( $lengthX / 2 ) solid rgba(255, 255, 255, 0);
+            border-bottom: ( $lengthY / 2 ) solid rgba(255, 255, 255, 0);
+            border-left: ( $lengthX / 2 ) solid rgba(255, 255, 255, 0);
+        }
+        @else if unquote( $direction ) == top{
+            border-top: ( $lengthY / 2 ) solid rgba(255, 255, 255, 0);
+            border-right: ( $lengthX / 2 ) solid rgba(255, 255, 255, 0);
+            border-bottom: ( $lengthY / 2 ) solid $color;
+            border-left: ( $lengthX / 2 ) solid rgba(255, 255, 255, 0);
+        }
+        @else if unquote( $direction ) == left{
+            border-top: ( $lengthY / 2 ) solid rgba(255, 255, 255, 0);
+            border-right: ( $lengthX / 2 ) solid $color;
+            border-bottom: ( $lengthY / 2 ) solid rgba(255, 255, 255, 0);
+            border-left: ( $lengthX / 2 ) solid rgba(255, 255, 255, 0);
+        }
+        @else if unquote( $direction ) == right{
+            border-top: ( $lengthY / 2 ) solid rgba(255, 255, 255, 0);
+            border-right: ( $lengthX / 2 ) solid rgba(255, 255, 255, 0);
+            border-bottom: ( $lengthY / 2 ) solid rgba(255, 255, 255, 0);
+            border-left: ( $lengthX / 2 ) solid $color;
+        }
+    }
+}

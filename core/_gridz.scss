@@ -1,0 +1,50 @@
+// get col width
+$column_width: ( $baseWidth - (($colCount - 1) * $gutterWidth ) ) / $colCount;
+
+
+/* - gridz_columns($boxCol:number,$parentCol:number)
+**********************************************************
+ returns box size in %
+**********************************************************
+*/
+
+@function gridz_columns($box_Columns,$parent_Columns){
+    @if $box_Columns == 0 { @return 0 }
+    @return percentage( ( ( $box_Columns * $column_width ) + ( ( $box_Columns - 1 ) * $gutterWidth ) ) / ( ( $parent_Columns * $column_width ) + ( ( $parent_Columns - 1 ) * $gutterWidth ) ) );
+}
+
+
+/* - gridz_gutter($parentCol:number)
+**********************************************************
+ returns gutter size in % depending on number
+ of parent-columns
+**********************************************************
+*/
+
+@function gridz_gutter($parent_Col){
+    @if $parent_Col == 0 { @return 0 }
+    @return percentage($gutterWidth / ( ( $parent_Col * $column_width ) + ( ( $parent_Col - 1 ) * $gutterWidth ) ) );
+}
+
+
+/* - @include respVideoContainer($boxCol:number,$parentCol:number)
+**********************************************************
+ Uses gridz_columns among other properties to create a
+ video container (iframe) for the amout of columns in
+ a certain amount of parent-columns
+**********************************************************
+*/
+@mixin respVideoContainer( $cols, $parent){
+    width: gridz_columns($cols,$parent);
+    padding-bottom: ( gridz_columns($cols,$parent) * 0.5625 );
+    height: 0;
+    position: relative;
+    & iframe{
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top:0;
+        left:0;
+    }
+}
