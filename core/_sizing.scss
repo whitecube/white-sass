@@ -5,7 +5,7 @@
 **********************************************************
 */
 @function s($goal,$parent:false){
-    @if $parent { $denom: $parent; }
-    @else { $denom: $baseFontSize; }
+    $denom: $parent;
+    @if ($denom == false){ $denom: $baseFontSize; }
     @return ($goal / $denom * 1em);
 }
