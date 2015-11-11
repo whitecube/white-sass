@@ -7,10 +7,12 @@ A few SASS mixins and functions we use on daily basis
 
 Added the following features :
 
-- Gridz
-      - `fixedCol()`: You can now get grid values returned in `px`, `em`, `rem` or `bananas` instead of `%`.
-- Utils
+- Gridz: `fixedCol()`: You can now get grid values returned in `px`, `em`, `rem` or `bananas` instead of `%`.
+- Utils:
+      - `cover()`: Set an element's position in order to cover its relative parent.
       - `rmUnit()`: Removes units from values (Different from Sass's `unitless()`, which only returns `true` or `false`)
+      - `clickableTransparentBg()`: Easy bug fix for IE on transparent links displayed as blocks.
+- Sprites: `@include setHalfSpriteBack()`: does exactly what it says
 
 
 Updated :

@@ -1,8 +1,7 @@
-/* - @include hidden()
-**********************************************************
- Hides an element but keeps it usable by Screen-readers
-**********************************************************
-*/
+// - @include hidden()
+// **********************************************************
+// Hides an element but keeps it usable by Screen-readers
+// **********************************************************
 
 @mixin hidden(){
     position: absolute;
@@ -10,12 +9,28 @@
     left: -99999px;
 }
 
-/* - @include clearfix([both|left|right])
-**********************************************************
- Default : both
- Reset float on parent-element of floated elements
-**********************************************************
-*/
+
+// - @include cover()
+// **********************************************************
+// sets an element in an absolute position, covering its
+// relative parent.
+// **********************************************************
+
+@mixin cover(){
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+
+// - @include clearfix([both|left|right])
+// **********************************************************
+// Default : both
+// Reset float on parent-element of floated elements
+// **********************************************************
+
 @mixin clearfix( $w:both ){
     &:after{
         content: "";
@@ -24,21 +39,35 @@
     }
 }
 
-/* - @include resetFW()
-**********************************************************
- cleares width and float on element.
- Usefull on responsive designs
-**********************************************************
-*/
+
+// - @include resetFW()
+// **********************************************************
+// cleares width and float on element.
+// Usefull on responsive designs
+// **********************************************************
+
 @mixin resetFW(){
     width: auto;
     float: none;
 }
 
+
 // - @include rmUnit( $var: number+unit )
 // **********************************************************
 // removes units from variable values
 // **********************************************************
+
 @function rmUnit($var) {
     @return $var / ($var * 0 + 1);
+}
+
+
+// - @include clickableTransparentBg()
+// **********************************************************
+// Adds a transparent background to a clickable block-
+// element. Why ? Because IE.
+// **********************************************************
+
+@function clickableTransparentBg() {
+    background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0 repeat;
 }
