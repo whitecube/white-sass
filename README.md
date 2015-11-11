@@ -13,6 +13,7 @@ Added the following features :
       - `rmUnit()`: Removes units from values (Different from Sass's `unitless()`, which only returns `true` or `false`)
       - `clickableTransparentBg()`: Easy bug fix for IE on transparent links displayed as blocks.
 - Sprites: `@include setHalfSpriteBack()`: does exactly what it says
+- **Icons !** You can now easily use icon-fonts and add pink SVG hearts everywhere with a simple mixin !
 
 
 Updated :

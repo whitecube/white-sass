@@ -5,6 +5,7 @@
 
 // load config & vars
 @import "config/global";
+@import "config/icons";
 @import "config/easing";
 
 // load mixins and functions
@@ -12,4 +13,5 @@
 @import "core/sizing";
 @import "core/gridz";
 @import "core/sprite";
+@import "core/icons";
 @import "core/pseudoElements";
