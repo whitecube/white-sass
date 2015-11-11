@@ -33,7 +33,7 @@ $ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGr
 
 @function gutter($parent){
     @if $parent == 0 { @return 0 }
-    @return percentage(($gutterWidth * $ws_GridzUnit) / fixedCol($parent) );
+    @return percentage(($ws_sGridzGutterWidth * $ws_GridzUnit) / fixedCol($parent) );
 }
 
 
