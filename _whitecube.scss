@@ -1,7 +1,7 @@
-/* ************************* *
- * whiteCube SCSS file       *
- * mixins and functions      *
- * ************************* */
+//  * ************************* *
+//  * whiteCube SCSS file       *
+//  * mixins and functions      *
+//  * ************************* *
 
 // load config & vars
 @import "config/global";
@@ -12,5 +12,4 @@
 @import "core/sizing";
 @import "core/gridz";
 @import "core/sprite";
-@import "core/compassOverride";
 @import "core/pseudoElements";
