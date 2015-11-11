@@ -1,45 +1,55 @@
-/* - @include triangle($color:color, $lengthX:[px|em|rem], $lengthY:[px|em|rem], $direction:[bottom|top|left|right], $position:css-list, $pseudoElement:[after|before])
-**********************************************************
- creates triangle element on pseudo element (before/after)
- in all directions (left/right/top/left, positions
- and sizes.
-**********************************************************
-*/
-@mixin triangle( $color, $lengthX: 10px, $lengthY: 10px, $direction: bottom, $position: ( bottom 0, left 50% ), $pseudoElement: after ){
-    &:#{$pseudoElement}{
-        content: '';
-        width: 0;
-        height: 0;
-        position: absolute;
-        z-index: 99;
+// - @include triangle( $dir: direction, $w: pixels-width, $h: pixels-height, $color: color)
+// **********************************************************
+// creates css triangles. Use it on every element you want
+// (I'd suggest on ::before & ::after).
+// Available directions:
+//    - topLeft
+//    - top
+//    - topRight
+//    - right
+//    - bottomRight
+//    - bottom
+//    - bottomLeft
+//    - left
+// **********************************************************
 
-        @each $prop in $position{
-            #{unquote(nth($prop, 1))}: #{unquote(nth($prop, 2))};
-        }
+@mixin triangle($dir:right, $w:20, $h:20, $color:#000000){
+    display: block;
+    width: 0;
+    height: 0;
+    line-height: 0px;
+    border-style: solid;
 
-        @if unquote( $direction ) == bottom{
-            border-top: ( $lengthY / 2 ) solid $color;
-            border-right: ( $lengthX / 2 ) solid rgba(255, 255, 255, 0);
-            border-bottom: ( $lengthY / 2 ) solid rgba(255, 255, 255, 0);
-            border-left: ( $lengthX / 2 ) solid rgba(255, 255, 255, 0);
-        }
-        @else if unquote( $direction ) == top{
-            border-top: ( $lengthY / 2 ) solid rgba(255, 255, 255, 0);
-            border-right: ( $lengthX / 2 ) solid rgba(255, 255, 255, 0);
-            border-bottom: ( $lengthY / 2 ) solid $color;
-            border-left: ( $lengthX / 2 ) solid rgba(255, 255, 255, 0);
-        }
-        @else if unquote( $direction ) == left{
-            border-top: ( $lengthY / 2 ) solid rgba(255, 255, 255, 0);
-            border-right: ( $lengthX / 2 ) solid $color;
-            border-bottom: ( $lengthY / 2 ) solid rgba(255, 255, 255, 0);
-            border-left: ( $lengthX / 2 ) solid rgba(255, 255, 255, 0);
-        }
-        @else if unquote( $direction ) == right{
-            border-top: ( $lengthY / 2 ) solid rgba(255, 255, 255, 0);
-            border-right: ( $lengthX / 2 ) solid rgba(255, 255, 255, 0);
-            border-bottom: ( $lengthY / 2 ) solid rgba(255, 255, 255, 0);
-            border-left: ( $lengthX / 2 ) solid $color;
-        }
+    @if unquote($dir) == topLeft{
+        border-width: (rmUnit($h) * 1px) (rmUnit($w) * 1px) 0 0;
+        border-color: $color transparent transparent transparent;
+    }
+    @else if unquote($dir) == top{
+        border-width: 0 (rmUnit($w)/2 * 1px) (rmUnit($h) * 1px) (rmUnit($w)/2 * 1px);
+        border-color: transparent transparent $color transparent;
+    }
+    @else if unquote($dir) == topRight{
+        border-width: 0 (rmUnit($w) * 1px) (rmUnit($h) * 1px) 0;
+        border-color: transparent $color transparent transparent;
+    }
+    @else if unquote($dir) == right{
+        border-width: (rmUnit($h)/2 * 1px) 0 (rmUnit($h)/2 * 1px) (rmUnit($w) * 1px);
+        border-color: transparent transparent transparent $color;
+    }
+    @else if unquote($dir) == bottomRight{
+        border-width: 0 0 (rmUnit($h) * 1px) (rmUnit($w) * 1px);
+        border-color: transparent transparent $color transparent;
+    }
+    @else if unquote($dir) == bottom{
+        border-width: (rmUnit($h) * 1px) (rmUnit($w)/2 * 1px) 0 (rmUnit($w)/2 * 1px);
+        border-color: $color transparent transparent transparent;
+    }
+    @else if unquote($dir) == bottomLeft{
+        border-width: (rmUnit($h) * 1px) 0 0 (rmUnit($w) * 1px);
+        border-color: transparent transparent transparent $color;
+    }
+    @else if unquote($dir) == left{
+        border-width: (rmUnit($h)/2 * 1px) (rmUnit($w) * 1px) (rmUnit($h)/2 * 1px) 0;
+        border-color: transparent $color transparent transparent;
     }
 }

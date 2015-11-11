@@ -34,3 +34,11 @@
     width: auto;
     float: none;
 }
+
+// - @include rmUnit( $var: number+unit )
+// **********************************************************
+// removes units from variable values
+// **********************************************************
+@function rmUnit($var) {
+    @return $var / ($var * 0 + 1);
+}
