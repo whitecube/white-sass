@@ -4,8 +4,8 @@ $ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGr
 
 //  - fixedCol( $col: number )
 // **********************************************************
-//  returns size based on the specified amount of columns.
-//  uses the units you chose in config/global
+// returns size based on the specified amount of columns.
+// uses the units you chose in config/global
 // **********************************************************
 
 @function fixedCol($col){
@@ -16,7 +16,7 @@ $ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGr
 
 //  - col( $col: number, $parent: number )
 // **********************************************************
-//  returns box size in %
+// returns box size in %
 // **********************************************************
 
 @function col($col,$parent){
@@ -27,8 +27,8 @@ $ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGr
 
 // - gutter( $parent: number )
 // **********************************************************
-//  returns gutter size in % depending on number
-//  of parent-columns
+// returns gutter size in % depending on number
+// of parent-columns
 // **********************************************************
 
 @function gutter($parent){
@@ -39,9 +39,9 @@ $ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGr
 
 // - @include respVideoContainer( $col: number, $parent: number )
 // **********************************************************
-//  Uses col among other properties to create a
-//  video container (iframe) for the amout of columns in
-//  a certain amount of parent-columns
+// Uses col among other properties to create a
+// video container (iframe) for the amout of columns in
+// a certain amount of parent-columns
 // **********************************************************
 
 @mixin respVideoContainer( $col, $parent){

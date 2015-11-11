@@ -1,10 +1,79 @@
-@mixin set_sprite($sprite) {
-    background: sprite-url($icons);
-    background-position: sprite-position($icons, $sprite);
-    background-repeat: no-repeat;
-    display: block;
-    height: image-height(sprite-file($icons, $sprite));
-    width: image-width(sprite-file($icons, $sprite));
-    text-indent: -9999px;
-    overflow: hidden;
+//    NORMAL DISPLAY
+$ws_sprite-1x = if($ws_sprite-1x-path, sprite-map($ws_sprite-1x-path, $ws_sprite-layout, $ws_srpite-spacing), false);
+
+//    RETINA DISPLAY
+$ws_sprite-2x = if($ws_sprite-2x-path, sprite-map($ws_sprite-2x-path, $ws_sprite-layout, $ws_srpite-spacing), false);
+
+
+
+// - @include setSpriteBase()
+// **********************************************************
+// Sets all base rules for using sprites.
+// Does not include sprite positionning itselfs.
+// Can be useful if you want to optimise your code.
+// **********************************************************
+
+@mixin setSpriteBase(){
+      display: block;
+      text-indent: -9999px;
+      overflow: hidden;
+      @if $ws_sprite-1x {
+            background-image: sprite-url($ws_sprite-1x);
+            background-repeat: no-repeat;
+      }
+      @if $ws_sprite-2x {
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+                  background-image: sprite-url($ws_sprite-2x);
+            }
+      }
+}
+
+
+// - @include setSprite( $sprite: png-file-name, $includeBase: boolean)
+// **********************************************************
+// Sets all base rules for using sprites.
+// Does not include sprite positionning itselfs.
+// Can be useful if you want to optimise your code.
+// **********************************************************
+
+@mixin setSprite($sprite,$includeBase:true) {
+      @if $includeBase {
+            @include setSpriteBase();
+      }
+      @if $ws_sprite-1x {
+            background-position: sprite-position($ws_sprite-1x, $sprite);
+            height: image-height(sprite-file($ws_sprite-1x, $sprite));
+            width: image-width(sprite-file($ws_sprite-1x, $sprite));
+      }
+      @if $ws_sprite-2x {
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+                  background-size: ceil(image-width(sprite-path($ws_sprite-2x)) / 2) ceil(image-height(sprite-path($ws_sprite-2x)) / 2);
+                  background-position: ceil(nth(sprite-position($ws_sprite-2x, $sprite), 1) / 2) ceil(nth(sprite-position($ws_sprite-2x, $sprite), 2) / 2);
+                  height: ceil(image-height(sprite-file($ws_sprite-2x, $sprite)) / 2) + 1px;
+                  width: ceil(image-width(sprite-file($ws_sprite-2x, $sprite)) / 2) + 1px;
+            }
+      }
+}
+
+
+// - @include setHalfSpriteBack( $sprite: png-file-name, $dir: [left|right|top|bottom], $offset-1x: size, $offset-2x: [size|false])
+// **********************************************************
+// Sets a negative margin rule to the block of the size
+// of the requested png-file.
+// If $offset-2x is not specified, it is assumed to be the
+// the same as $offset-1x.
+// **********************************************************
+
+@mixin setHalfSpriteBack($sprite,$dir:left,$offset-1x:0px,$offset-2x:false){
+      @if $offset-2x == false { $offset-2x: $offset-1x; }
+      @if $dir == left { margin-left: -(image-width(sprite-file($ws_sprite-1x, $sprite))/2 + $offset-1x); }
+      @if $dir == right { margin-right: -(image-width(sprite-file($ws_sprite-1x, $sprite))/2 + $offset-1x); }
+      @if $dir == top { margin-top: -(image-height(sprite-file($ws_sprite-1x, $sprite))/2 + $offset-1x); }
+      @if $dir == bottom { margin-bottom: -(image-height(sprite-file($ws_sprite-1x, $sprite))/2 + $offset-1x); }
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            @if $dir == left { margin-left: - ceil(image-width(sprite-file($ws_sprite-2x, $sprite))/4 + $offset-2x); }
+            @if $dir == right { margin-right: - ceil(image-width(sprite-file($ws_sprite-2x, $sprite))/4 + $offset-2x); }
+            @if $dir == top { margin-top: - ceil(image-height(sprite-file($ws_sprite-2x, $sprite))/4 + $offset-2x); }
+            @if $dir == bottom { margin-bottom: - ceil(image-height(sprite-file($ws_sprite-2x, $sprite))/4 + $offset-2x); }
+      }
 }

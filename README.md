@@ -17,6 +17,7 @@ Updated :
 
 - Config file is now easier to use.
 - pseudoElements: triangles can now be used on any element (but it's always better on a `::before` or `::after`) and has all the possible directions (topLeft, top, topRight, right, bottomRight, bottom, bottomLeft, left).
+- Sprites: added retina support (we actually used it for a while but never added it to this repo).
 
 Removed :
 
