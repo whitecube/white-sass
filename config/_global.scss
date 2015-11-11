@@ -1,12 +1,15 @@
-// FONTS & FONT SIZES
-$baseFontSize: 16;
+// FONTS
 
-// GRIDZ & WIDTHZ
-    // Following params have to be in same unit. Can be px, em or rem.
-$baseWidth: 1024px;
-$gutterWidth: 40px;
-    // colCount: number of columns (without units)
-$colCount: 12;
+$ws_sBaseFont:          16;         //    Base font-size (without units but based on pixels)
+
+
+// GRIDZ
+
+$ws_GridzUnit:          1em;        //    Unit used in the gridz-system. Possible values : 1px, 1em, 1rem, 1banana (all available css units except '%')
+$ws_iGridzColumns:      12;         //    Number of columns you want in the grid
+$ws_sGridzTotalWidth:   1024;       //    Base grid-size (without units but based on pixels)
+$ws_sGridzGutterWidth:  40;         //    Base gutter-size (without units but based on pixels)
 
 // SPRITES
-$icons: sprite-map("sprite/*.png", $layout: smart);
+
+$icons:                 sprite-map("sprite/*.png", $layout: smart);

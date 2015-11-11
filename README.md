@@ -10,6 +10,10 @@ Added the following features :
 - Gridz
       - `fixedCol()` : You can now get grid values returned in `px`, `em`, `rem` or `bananas` instead of `%`.
 
+Updated :
+
+- Config file is now easier to use.
+
 Removed :
 
-- CompassOverrides. Was not pertinent anymore.
+- CompassOverride. Was not pertinent anymore.

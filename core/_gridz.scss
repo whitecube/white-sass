@@ -1,5 +1,5 @@
 // get col width
-$column_width: ( $baseWidth - (($colCount - 1) * $gutterWidth ) ) / $colCount;
+$ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGridzGutterWidth)) / $ws_iGridzColumns;
 
 
 //  - fixedCol( $col: number )
@@ -7,11 +7,10 @@ $column_width: ( $baseWidth - (($colCount - 1) * $gutterWidth ) ) / $colCount;
 //  returns size based on the specified amount of columns.
 //  uses the units you chose in config/global
 // **********************************************************
-// 
 
 @function fixedCol($col){
     @if $col == 0 { @return 0 }
-    @return ( ( $col * $column_width ) + ( ( $col - 1 ) * $gutterWidth ) );
+    @return ( ( $col * $ws_sGridzColumWidth ) + ( ( $col - 1 ) * $ws_sGridzGutterWidth ) ) * $ws_GridzUnit;
 }
 
 
@@ -19,7 +18,6 @@ $column_width: ( $baseWidth - (($colCount - 1) * $gutterWidth ) ) / $colCount;
 // **********************************************************
 //  returns box size in %
 // **********************************************************
-// 
 
 @function col($col,$parent){
     @if $col == 0 { @return 0 }
@@ -32,11 +30,10 @@ $column_width: ( $baseWidth - (($colCount - 1) * $gutterWidth ) ) / $colCount;
 //  returns gutter size in % depending on number
 //  of parent-columns
 // **********************************************************
-//
 
 @function gutter($parent){
     @if $parent == 0 { @return 0 }
-    @return percentage($gutterWidth / fixedCol($parent) );
+    @return percentage(($gutterWidth * $ws_GridzUnit) / fixedCol($parent) );
 }
 
 
@@ -46,7 +43,6 @@ $column_width: ( $baseWidth - (($colCount - 1) * $gutterWidth ) ) / $colCount;
 //  video container (iframe) for the amout of columns in
 //  a certain amount of parent-columns
 // **********************************************************
-//
 
 @mixin respVideoContainer( $col, $parent){
     width: col($col, $parent);
