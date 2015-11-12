@@ -68,6 +68,6 @@
 // element. Why ? Because IE.
 // **********************************************************
 
-@function clickableTransparentBg() {
+@mixin clickableTransparentBg() {
     background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0 repeat;
 }
