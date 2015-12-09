@@ -1,8 +1,8 @@
 //    NORMAL DISPLAY
-$ws_sprite-1x: if($ws_sprite-1x-path, sprite-map($ws_sprite-1x-path, $ws_sprite-layout, $ws_srpite-spacing), false);
+$ws_sprite-1x: if($ws_sprite-1x-path, sprite-map($ws_sprite-1x-path, $ws_sprite-layout, $ws_sprite-spacing), false);
 
 //    RETINA DISPLAY
-$ws_sprite-2x: if($ws_sprite-2x-path, sprite-map($ws_sprite-2x-path, $ws_sprite-layout, $ws_srpite-spacing), false);
+$ws_sprite-2x: if($ws_sprite-2x-path, sprite-map($ws_sprite-2x-path, $ws_sprite-layout, $ws_sprite-spacing), false);
 
 
 
