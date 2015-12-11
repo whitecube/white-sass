@@ -3,6 +3,12 @@ white-sass
 
 A few SASS mixins and functions we use on daily basis
 
+## Update 11/12/2015
+
+Added **Kaduk**, a mixin (using independent functions if you want more flexibility) that allows you to do this (and it works in responsive if you pass it a percentage value) :
+
+![schema of Kaduk ](https://raw.githubusercontent.com/whiteCube/white-sass/master/kaduk.png)
+
 ## Update 11/11/2015
 
 Added the following features :
