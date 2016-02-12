@@ -71,3 +71,16 @@
 @mixin clickableTransparentBg() {
     background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7") 0 0 repeat;
 }
+
+
+// - @include rootCss()
+// **********************************************************
+// Adds base CSS rules (to be used on root HTML element)
+// **********************************************************
+
+@mixin rootCss() {
+    -webkit-text-size-adjust: 100%;
+    & * {
+        @include box-sizing(border-box);
+    }
+}
