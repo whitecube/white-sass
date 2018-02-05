@@ -1,0 +1,8 @@
+// - color( $name: key, $palette: $project-colors )
+// **********************************************************
+// returns the defined color in given or default color palette
+// **********************************************************
+
+@function color($name, $palette: $project-colors) {
+    @return map-get($palette, $name);
+}
