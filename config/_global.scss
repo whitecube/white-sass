@@ -17,8 +17,3 @@ $ws_sprite-1x-path:     "img/sprite/@1x/*.png";             //    Path to png fi
 $ws_sprite-2x-path:     "img/sprite/@2x/*.png";             //    Path to png files for retina display, set to false if not used.
 $ws_sprite-layout:      vertical;                           //    Sass sprite rendering. Can be [vertical|horizontal|diagonal|smart]. "smart" is actually the best choice, but it doesn't support spacing
 $ws_sprite-spacing:     2px;                                //    Only works for $ws_sprite-layout = [vertical|horizontal] !
-
-
-// ICONS
-
-$ws_icon-font-family:   'icons';                            //    Font-family name of the icon-font
