@@ -16,4 +16,12 @@ $ws_fonts-path: "../fonts/";
 //      ),
 //      ...
 // );
-$ws_fonts-stack: ();
+$ws_fonts-stack: (
+    icons: (
+        font: (
+            family: 'iconfont',
+            weight: normal,
+            style: normal
+        )
+    )
+);

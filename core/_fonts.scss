@@ -92,14 +92,19 @@ $ws_used-fonts: ();
 // Creates the necessary font-* declarations for using the
 // font at the desired place.
 // **********************************************************
-@mixin font($name, $variant: regular, $properties: family weight style, $font-stack: $base-font-stack){
+@mixin font($name, $variant: regular, $properties: family weight style, $font-stack: $ws_fonts-stack){
     $font-properties: map-deep-get($font-stack, $name, $variant);
     @if $font-properties {
         @include track-fonts($name, $variant);
-        @each $key, $values in $font-properties {
-            @if contains($properties, $key) {
-                font-#{$key}: map-get($font-properties, $key);
+        @each $property in $properties {
+            $value: map-get($font-properties, $property);
+            @if $property == family {
+                $stack: join(($value), map-get($font-properties, stack));
+                @if $stack {
+                    $value: $stack;
+                }
             }
+            font-#{$property}: $value;
         }
     }
 }

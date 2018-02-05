@@ -6,12 +6,10 @@
 // **********************************************************
 
 @mixin setIconBase() {
-      font-family: $ws_icon-font-family;
-      speak: none;
-      font-style: normal;
-      font-weight: normal;
+      @include font(icons, font);
       font-variant: normal;
       text-transform: none;
+      speak: none;
       line-height: 1;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;

@@ -1,13 +1,12 @@
-// - s( $goal: number, [$parent: number] )
+// - s( $goal: number, [$parent: number|font-size-name] )
 // **********************************************************
-// $parent default : false
+// $parent default : s
 // Computes em sizes from pixel-based numbers
 // **********************************************************
 
-@function s($goal,$parent:false){
-    $denom: $parent;
-    @if ($denom == false){ $denom: $ws_sBaseFont; }
-    @return ($goal / $denom * 1em);
+@function s($goal, $parent: m){
+    $parent: if(type-of($parent) == number, $parent, fvalue($parent) * 1em);
+    @return ($goal / rmUnit($parent) * 1em);
 }
 
 

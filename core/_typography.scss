@@ -1,0 +1,27 @@
+// - fvalue($size, $parent)
+// **********************************************************
+// returns the defined font-size without units
+// **********************************************************
+
+@function fvalue($size: m) {
+    @return map-get($ws_typography-sizes, $size);
+}
+
+// - fpx($size)
+// **********************************************************
+// returns the defined font-size in px
+// **********************************************************
+
+@function fpx($size: m) {
+    @return fvalue($size) * 1px;
+}
+
+// - fsize($size, $parent)
+// **********************************************************
+// returns the defined font-size in em
+// **********************************************************
+
+@function fsize($size, $parent: m) {
+    $parent: if(type-of($parent) == number, $parent, fvalue($parent));
+    @return s(fvalue($size), $parent);
+}
