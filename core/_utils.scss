@@ -16,12 +16,37 @@
 // relative parent.
 // **********************************************************
 
-@mixin cover(){
+@mixin cover($arg1:false, $arg2:false, $arg3:false, $arg4:false){
+    $top: 0;
+    $right: 0;
+    $bottom: 0;
+    $left: 0;
+    @if($arg1 != false and $arg2 == false and $arg3 == false and $arg4 == false) {
+        $top: $arg1;
+        $right: $arg1;
+        $bottom: $arg1;
+        $left: $arg1;
+    } @else if($arg1 != false and $arg2 != false and $arg3 == false and $arg4 == false) {
+        $top: $arg1;
+        $right: $arg2;
+        $bottom: $arg1;
+        $left: $arg2;
+    } @else if($arg1 != false and $arg2 != false and $arg3 != false and $arg4 == false) {
+        $top: $arg1;
+        $right: $arg2;
+        $bottom: $arg3;
+        $left: $arg2;
+    } @else if($arg1 != false and $arg2 != false and $arg3 != false and $arg4 != false) {
+        $top: $arg1;
+        $right: $arg2;
+        $bottom: $arg3;
+        $left: $arg4;
+    }
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
 }
 
 
@@ -80,7 +105,4 @@
 
 @mixin rootCss() {
     -webkit-text-size-adjust: 100%;
-    & * {
-        @include box-sizing(border-box);
-    }
 }
