@@ -9,20 +9,20 @@ Reworked some of the font helpers and added a color mixin.
 
 **Fonts & Sizing**  
 
-`font(family, variant)`  
+### `font(family, variant)`  
 Adds the necessary css rules to use the requested font/variant combo. These values are defined beforehand in the `$ws_fonts-path` variable (`config/_fonts.scss`)
 
-`s(px, font-size)`  
+### `s(px, font-size)`  
 Returns a `em` value for X pixels. `font-size` can be either a typs identifier or a pixel value.
 
-`fsize(font-size, parent)`  
+### `fsize(font-size, parent)`  
 Returns a `em` value for the given typs identifier relative to the given parent (which can be another typs identifier or a pixel value).
 
-`fvalue(font-size, parent)`  
+### `fvalue(font-size, parent)`  
 Returns an unit-less pixel value for the given typs identifier relative to the given parent (which can be another typs identifier or a pixel value).
 
 **Colors**  
-`color(color)`  
+### `color(color)`  
 Returns the color code defined in the `$ws_colors` variable (`config/_colors.scss`)
 
 ## Update 11/12/2015
