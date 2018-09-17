@@ -8,7 +8,7 @@
 @function em($goal: m, $parent: m){
     $goal: if(type-of($goal) == number, $goal, fvalue($goal) * 1em);
     $parent: if(type-of($parent) == number, $parent, fvalue($parent) * 1em);
-    @return ($goal / rmUnit($parent) * 1em);
+    @return (rmUnit($goal) / rmUnit($parent) * 1em);
 }
 
 // - px( $goal: number|font-size-name )
