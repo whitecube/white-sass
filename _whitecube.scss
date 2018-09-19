@@ -10,6 +10,7 @@
 @import "config/typography";
 @import "config/easing";
 @import "config/global";
+@import "config/breakpoints";
 
 // load mixins and functions
 @import "core/utils";
@@ -21,3 +22,4 @@
 @import "core/icons";
 @import "core/pseudoElements";
 @import "core/kaduk";
+@import "core/mq";

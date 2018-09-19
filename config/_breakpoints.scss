@@ -1,0 +1,10 @@
+$mq-breakpoints: (
+    xl: 1200px,
+    l: 920px,
+    m: 760px,
+    s: 640px,
+    xs: 480px
+);
+
+// Uncomment this line to display the currently active breakpoint in the top right of the browser window 
+// $mq-show-breakpoints: (xs, s, m, l, xl);
