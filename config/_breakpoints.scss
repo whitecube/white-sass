@@ -6,5 +6,6 @@ $mq-breakpoints: (
     xs: 480px
 );
 
-// Uncomment this line to display the currently active breakpoint in the top right of the browser window 
-// $mq-show-breakpoints: (xs, s, m, l, xl);
+@if $env != 'production' {
+    $mq-show-breakpoints: (xs, s, m, l, xl);
+}
