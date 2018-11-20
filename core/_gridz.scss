@@ -2,6 +2,17 @@
 $ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGridzGutterWidth)) / $ws_iGridzColumns;
 
 
+//  - fixedGut( $col: number )
+// **********************************************************
+// returns size based on the specified amount of gutter.
+// uses the units you chose in config/global
+// **********************************************************
+
+@function fixedGut($gut){
+    @if $gut == 0 { @return 0 }
+    @return    ($gut * $ws_sGridzGutterWidth);
+}
+
 //  - fixedCol( $col: number )
 // **********************************************************
 // returns size based on the specified amount of columns.
@@ -10,7 +21,7 @@ $ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGr
 
 @function fixedCol($col){
     @if $col == 0 { @return 0 }
-    @return ( ( $col * $ws_sGridzColumWidth ) + ( ( $col - 1 ) * $ws_sGridzGutterWidth ) ) * $ws_GridzUnit;
+    @return ( ( $col * $ws_sGridzColumWidth ) + ( ( $col - 1 ) * $ws_sGridzGutterWidth ) );
 }
 
 
@@ -34,6 +45,16 @@ $ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGr
 @function gutter($parent){
     @if $parent == 0 { @return 0 }
     @return percentage(($ws_sGridzGutterWidth) / fixedCol($parent) );
+}
+
+
+//  - colGut( $col: number, $colParent: number, $gutParent: number )
+// **********************************************************
+// returns box size in %
+// **********************************************************
+
+@function colGut($col, $gut, $colParent, $gutParent){
+    @return percentage( (fixedCol($col) + fixedGut($gut)) / (fixedCol($colParent) + fixedGut($gutParent)) );
 }
 
 
