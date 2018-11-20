@@ -21,7 +21,7 @@ $ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGr
 
 @function fixedCol($col){
     @if $col == 0 { @return 0 }
-    @return ( ( $col * $ws_sGridzColumWidth ) + ( ( $col - 1 ) * $ws_sGridzGutterWidth ) );
+    @return ( ( $col * $ws_sGridzColumWidth ) + ( ( decimal-ceil($col) - 1 ) * $ws_sGridzGutterWidth ) );
 }
 
 
