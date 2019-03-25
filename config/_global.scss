@@ -2,8 +2,8 @@
 
 $env: 'dev' !default;
 
-$ws_GridzUnit:          1em;        //    Unit used in the gridz-system. Possible values : 1px, 1em, 1rem, 1banana (all available css units except '%')
-$ws_iGridzColumns:      12;         //    Number of columns you want in the grid
-$ws_sGridzTotalWidth:   1024;       //    Base grid-size (without units but based on pixels)
-$ws_sGridzGutterWidth:  40;         //    Base gutter-size (without units but based on pixels)
+$grid_unit:     1em;        //    Unit used in the gridz-system. Possible values : 1px, 1em, 1rem, 1banana (all available css units except '%')
+$grid_columns:  12;         //    Number of columns you want in the grid
+$grid_width:    1024;       //    Base grid-size (without units but based on pixels)
+$gutter_size:   40;         //    Base gutter-size (without units but based on pixels)
 

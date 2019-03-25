@@ -1,5 +1,5 @@
 // get col width
-$ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGridzGutterWidth)) / $ws_iGridzColumns;
+$col_width: ($grid_width - (($grid_columns - 1) * $gutter_size)) / $grid_columns;
 
 
 //  - fixedGut( $col: number )
@@ -10,7 +10,7 @@ $ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGr
 
 @function fixedGut($gut){
     @if $gut == 0 { @return 0 }
-    @return    ($gut * $ws_sGridzGutterWidth);
+    @return    ($gut * $gutter_size);
 }
 
 //  - fixedCol( $col: number )
@@ -21,7 +21,7 @@ $ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGr
 
 @function fixedCol($col){
     @if $col == 0 { @return 0 }
-    @return ( ( $col * $ws_sGridzColumWidth ) + ( ( decimal-ceil($col) - 1 ) * $ws_sGridzGutterWidth ) );
+    @return ( ( $col * $col_width ) + ( ( decimal-ceil($col) - 1 ) * $gutter_size ) );
 }
 
 
@@ -44,7 +44,7 @@ $ws_sGridzColumWidth: ($ws_sGridzTotalWidth - (($ws_iGridzColumns - 1) * $ws_sGr
 
 @function gutter($parent){
     @if $parent == 0 { @return 0 }
-    @return percentage(($ws_sGridzGutterWidth) / fixedCol($parent) );
+    @return percentage(($gutter_size) / fixedCol($parent) );
 }
 
 
