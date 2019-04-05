@@ -11,6 +11,21 @@
     @return (rmUnit($goal) / rmUnit($parent) * 1em);
 }
 
+
+// - rem( $goal: number|font-size-name, [$root: number|font-size-name] )
+// **********************************************************
+// $root default : m
+// Computes rem sizes from pixel-based numbers
+// or defined font-sizes
+// **********************************************************
+
+@function rem($goal: m, $root: m) {
+    $goal: if(type-of($goal) == number, $goal, fvalue($goal) * 1em);
+    $root: if(type-of($root) == number, $root, fvalue($root) * 1em);
+    @return (rmUnit($goal) / rmUnit($root) * 1rem);
+}
+
+
 // - px( $goal: number|font-size-name )
 // **********************************************************
 // returns the defined size or font-size in px
