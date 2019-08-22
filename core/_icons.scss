@@ -41,5 +41,17 @@
 
 @mixin icon($icon) {
       @include setIconBase();
-      @include setIconInclude($icon);  
+      @include setIconInclude($icon);
+}
+
+@mixin dynamic-icon($location: 'before') {
+    &:#{$location} {
+        @include setIconBase();
+    }
+
+    @each $icon, $char in $ws_icon-list {
+        &[data-icon="#{$icon}"]:#{$location} {
+            @include setIconInclude($icon);
+        }
+    }
 }
