@@ -79,3 +79,34 @@ $col_width: ($grid_width - (($grid_columns - 1) * $gutter_size)) / $grid_columns
         left:0;
     }
 }
+
+// - background: $grid_gradient;
+// **********************************************************
+// Gradient value to display the grid
+// **********************************************************
+
+$grid_gradient: repeating-linear-gradient(
+    90deg,
+    tomato,
+    tomato col(1, $grid_columns),
+    white col(1, $grid_columns),
+    white col(1, $grid_columns) + gutter($grid_columns)
+);
+
+
+// - @include grid( $columnColor, $gutterColor, $columns );
+// **********************************************************
+// Includes a background gradient to display the grid
+// Can size properly in sub-grids by including the size 
+// of the parent as a last argument
+// **********************************************************
+
+@mixin grid($columnColor: tomato, $gutterColor: white, $columns: $grid_columns) {
+    background: repeating-linear-gradient(
+        90deg,
+        $columnColor,
+        $columnColor col(1, $columns),
+        $gutterColor col(1, $columns),
+        $gutterColor col(1, $columns) + gutter($columns)
+    );
+}
