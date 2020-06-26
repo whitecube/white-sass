@@ -1,5 +1,5 @@
 // Public fonts directory
-$ws_fonts-path: "../fonts/";
+$ws_fonts-path: "../../fonts/";
 
 // Available fonts declaration. Map format : 
 // $ws_fonts-stack: (
@@ -21,6 +21,7 @@ $ws_fonts-stack: (
         font: (
             family: 'iconfont',
             weight: normal,
+            file: 'iconfont',
             style: normal
         )
     )
