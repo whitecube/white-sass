@@ -1,5 +1,7 @@
 // get col width
-$col_width: ($grid_width - (($grid_columns - 1) * $gutter_size)) / $grid_columns;
+@use "sass:math";
+
+$col_width: math.div($grid_width - (($grid_columns - 1) * $gutter_size), $grid_columns);
 
 
 //  - fixedGut( $col: number )
@@ -32,7 +34,7 @@ $col_width: ($grid_width - (($grid_columns - 1) * $gutter_size)) / $grid_columns
 
 @function col($col,$parent){
     @if $col == 0 { @return 0 }
-    @return percentage( fixedCol($col) / fixedCol($parent) );
+    @return percentage( math.div(fixedCol($col), fixedCol($parent)) );
 }
 
 
@@ -44,7 +46,7 @@ $col_width: ($grid_width - (($grid_columns - 1) * $gutter_size)) / $grid_columns
 
 @function gutter($parent){
     @if $parent == 0 { @return 0 }
-    @return percentage(($gutter_size) / fixedCol($parent) );
+    @return percentage(math.div($gutter_size, fixedCol($parent)) );
 }
 
 
@@ -54,7 +56,7 @@ $col_width: ($grid_width - (($grid_columns - 1) * $gutter_size)) / $grid_columns
 // **********************************************************
 
 @function colGut($col, $gut, $colParent, $gutParent){
-    @return percentage( (fixedCol($col) + fixedGut($gut)) / (fixedCol($colParent) + fixedGut($gutParent)) );
+    @return percentage( math.div(fixedCol($col) + fixedGut($gut), fixedCol($colParent) + fixedGut($gutParent)) );
 }
 
 

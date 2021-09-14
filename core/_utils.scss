@@ -3,6 +3,8 @@
 // Hides an element but keeps it usable by Screen-readers
 // **********************************************************
 
+@use "sass:math";
+
 @mixin hidden(){
     position: absolute; 
     overflow: hidden; 
@@ -101,7 +103,7 @@
 // **********************************************************
 
 @function rmUnit($var) {
-    @return $var / ($var * 0 + 1);
+    @return math.div($var, $var * 0 + 1);
 }
 
 

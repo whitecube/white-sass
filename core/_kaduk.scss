@@ -51,8 +51,10 @@
       ---------------------------
 */
 
+@use "sass:math";
+
 @function getKadukRadians( $i ){
-      @return rmUnit($i) * (pi() / 180);
+      @return rmUnit($i) * math.div(pi(), 180);
 }
 
 @function getKadukValue( $iAngle, $iAdjacentLength ) {
@@ -117,7 +119,7 @@
       height: 0;
       width: $width;
       padding-bottom: $width;
-      @include getKadukPosition($position, ($width / 4));
+      @include getKadukPosition($position, ($width * 0.25));
       @include rotateZ($degrees);
-      @include getKadukOffset($position, $degrees, ($width / 4), getKadukUnit($width));
+      @include getKadukOffset($position, $degrees, ($width * 0.25), getKadukUnit($width));
 }

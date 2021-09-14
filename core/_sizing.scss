@@ -5,10 +5,12 @@
 // or defined font-sizes
 // **********************************************************
 
+@use "sass:math";
+
 @function em($goal: m, $parent: m){
     $goal: if(type-of($goal) == number, $goal, fvalue($goal) * 1em);
     $parent: if(type-of($parent) == number, $parent, fvalue($parent) * 1em);
-    @return (rmUnit($goal) / rmUnit($parent) * 1em);
+    @return (math.div(rmUnit($goal), rmUnit($parent)) * 1em);
 }
 
 
@@ -22,7 +24,7 @@
 @function rem($goal: m, $root: m) {
     $goal: if(type-of($goal) == number, $goal, fvalue($goal) * 1em);
     $root: if(type-of($root) == number, $root, fvalue($root) * 1em);
-    @return (rmUnit($goal) / rmUnit($root) * 1rem);
+    @return (math.div(rmUnit($goal), rmUnit($root)) * 1rem);
 }
 
 
@@ -45,5 +47,5 @@
 // **********************************************************
 
 @function ps_ls($ps_num){
-    @return ($ps_num / 1000 * 1em);
+    @return ($ps_num * 0.001 * 1em);
 }

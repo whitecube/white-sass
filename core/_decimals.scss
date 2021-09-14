@@ -14,6 +14,8 @@
 //     decimal-round(0.666, 1) => 0.7
 //     decimal-round(0.666, 2) => 0.67
 //
+@use "sass:math";
+
 @function decimal-round ($number, $digits: 0, $mode: round) {
     $n: 1;
     // $number must be a number
@@ -35,11 +37,11 @@
         }
     }
     @if $mode == round {
-        @return round($number * $n) / $n;
+        @return math.div(round($number * $n), $n);
     } @else if $mode == ceil {
-        @return ceil($number * $n) / $n;
+        @return math.div(ceil($number * $n), $n);
     } @else if $mode == floor {
-        @return floor($number * $n) / $n;
+        @return math.div(floor($number * $n), $n);
     } @else {
         @warn '#{ $mode } is undefined keyword.';
         @return $number;
