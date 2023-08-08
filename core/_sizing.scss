@@ -8,9 +8,9 @@
 // or defined font-sizes
 // **********************************************************
 @function em($goal: m, $parent: m) {
-  $goal: if(type-of($goal) == number, $goal, fvalue($goal) * 1em);
-  $parent: if(type-of($parent) == number, $parent, fvalue($parent) * 1em);
-  @return (math.div(rmUnit($goal), rmUnit($parent)) * 1em);
+    $goal: if(type-of($goal) == number, $goal, fvalue($goal) * 1em);
+    $parent: if(type-of($parent) == number, $parent, fvalue($parent) * 1em);
+    @return (math.div(rmUnit($goal), rmUnit($parent)) * 1em);
 }
 
 // - rem( $goal: number|font-size-name, [$root: number|font-size-name] )
@@ -20,9 +20,9 @@
 // or defined font-sizes
 // **********************************************************
 @function rem($goal: m, $root: m) {
-  $goal: if(type-of($goal) == number, $goal, fvalue($goal) * 1em);
-  $root: if(type-of($root) == number, $root, fvalue($root) * 1em);
-  @return (math.div(rmUnit($goal), rmUnit($root)) * 1rem);
+    $goal: if(type-of($goal) == number, $goal, fvalue($goal) * 1em);
+    $root: if(type-of($root) == number, $root, fvalue($root) * 1em);
+    @return (math.div(rmUnit($goal), rmUnit($root)) * 1rem);
 }
 
 // - px( $goal: number|font-size-name )
@@ -30,8 +30,8 @@
 // returns the defined size or font-size in px
 // **********************************************************
 @function px($goal: m) {
-  $goal: if(type-of($goal) == number, $goal, fvalue($goal) * 1px);
-  @return rmUnit($goal) * 1px;
+    $goal: if(type-of($goal) == number, $goal, fvalue($goal) * 1px);
+    @return rmUnit($goal) * 1px;
 }
 
 // - ps_ls( $ps_num: number )
@@ -41,7 +41,7 @@
 // Computes em letter-spacing
 // **********************************************************
 @function ps_ls($ps_num) {
-  @return ($ps_num * 0.001 * 1em);
+    @return ($ps_num * 0.001 * 1em);
 }
 
 // - mid( $min, $max)
@@ -50,9 +50,9 @@
 // Only use it for the text for now.
 // **********************************************************
 @function mid($min, $max) {
-  @return clamp(
-    rem($min),
-    calc(($min / 320 * 100 - $max / $grid_width * 100) * 1vw),
-    rem($max)
-  );
+    @return clamp(
+        rem($min),
+        calc(($min / 320 * 100 - $max / $grid_width * 100) * 1vw),
+        rem($max)
+    );
 }
