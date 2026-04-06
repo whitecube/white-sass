@@ -5,20 +5,39 @@
 
 @use "sass:map";
 @use "sass:list";
+@use "sass:color";
 @use "./list-concat" as *;
 @use "./str-split" as *;
 @use "../../lib/config";
 
-@function color($keys...) {
-  $mapped-keys: ("colors");
+@function color-hex-to-rgb-values($hex) {
+  @return color.channel($hex, "red", $space: rgb), color.channel($hex, "green", $space: rgb), color.channel($hex, "blue", $space: rgb);
+}
 
-  @each $key in $keys {
-    $key: str-split($key, ".");
-    $mapped-keys: list.join($mapped-keys, $key);
-  }
+@function color-namespace($key) {
+  $keys: str-split($key, ".");
+  @return list.join(("colors"), $keys);
+}
 
+@function color-var($namespace, $fallback) {
   @return var(
-    --#{list-concat($mapped-keys, "-")},
-    config.get(list-concat($mapped-keys, "."))
+    --#{list-concat($namespace, "-")},
+    $fallback
   );
+}
+
+@function color($key) {
+  $namespace: color-namespace($key);
+  $fallback: color-hex-to-rgb-values(config.get(list-concat($namespace, ".")));
+  @return rgb(color-var($namespace, #{$fallback}));
+}
+
+@function color-rgb($key) {
+  @return color($key);
+}
+
+@function color-rgba($key, $opacity) {
+  $namespace: color-namespace($key);
+  $fallback: color-hex-to-rgb-values(config.get(list-concat($namespace, ".")));
+  @return rgba(color-var($namespace, $fallback), $opacity);
 }
