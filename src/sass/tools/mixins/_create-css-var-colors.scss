@@ -8,6 +8,6 @@
       @include create-css-var-colors("#{$base}-#{$name}", $config-item);
     }
   } @else {
-    @include create-css-var("#{$base}", color-hex-to-rgb-values($config));
+    @include create-css-var("#{$base}", color-to-rgb-values($config));
   }
 }

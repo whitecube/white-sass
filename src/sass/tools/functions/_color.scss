@@ -10,34 +10,31 @@
 @use "./str-split" as *;
 @use "../../lib/config";
 
-@function color-hex-to-rgb-values($hex) {
+@function color-to-rgb-values($hex) {
   @return color.channel($hex, "red", $space: rgb), color.channel($hex, "green", $space: rgb), color.channel($hex, "blue", $space: rgb);
 }
 
-@function color-namespace($key) {
-  $keys: str-split($key, ".");
-  @return list.join(("colors"), $keys);
-}
+@function color-var($key, $fallback: false) {
+  $namespace: list.join(("colors"), str-split($key, "."));
 
-@function color-var($namespace, $fallback) {
+  @if $fallback == false {
+    @return var(--#{list-concat($namespace, "-")});
+  } 
+
   @return var(
     --#{list-concat($namespace, "-")},
     $fallback
   );
 }
 
-@function color($key) {
-  $namespace: color-namespace($key);
-  $fallback: color-hex-to-rgb-values(config.get(list-concat($namespace, ".")));
-  @return rgb(color-var($namespace, #{$fallback}));
-}
+@function color($key, $opacity: false, $fallback: false) {
+  @if $opacity == false or $opacity >= 1 {
+    @return rgb(color-var($key, $fallback));
+  }
 
-@function color-rgb($key) {
-  @return color($key);
-}
-
-@function color-rgba($key, $opacity) {
-  $namespace: color-namespace($key);
-  $fallback: color-hex-to-rgb-values(config.get(list-concat($namespace, ".")));
-  @return rgba(color-var($namespace, $fallback), $opacity);
+  @if $opacity <= 0 {
+    @return transparent;
+  }
+  
+  @return rgba(color-var($key, $fallback), $opacity);
 }
