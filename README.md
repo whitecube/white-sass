@@ -227,7 +227,7 @@ $config: (
 // Providing fallback colors:
 .icon-user {
   fill: color('shade.060', $fallback: #598bc6); // fill: rgb(var(--colors-shade-060, 89, 139, 198));
-  stroke: color('shade.000', 0.2, #000000); // fill: stroke(var(--colors-shade-000, 0, 0, 0), .2);
+  stroke: color('shade.000', 0.2, #000000); // stroke: rgba(var(--colors-shade-000, 0, 0, 0), .2);
 }
 ```
 
