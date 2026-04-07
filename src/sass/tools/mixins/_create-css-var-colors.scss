@@ -1,0 +1,13 @@
+@use "sass:meta";
+@use "../functions/color" as *;
+@use "create-css-var" as *;
+
+@mixin create-css-var-colors($base, $config) {
+  @if meta.type-of($config) == "map" {
+    @each $name, $config-item in $config {
+      @include create-css-var-colors("#{$base}-#{$name}", $config-item);
+    }
+  } @else {
+    @include create-css-var("#{$base}", color-to-rgb-values($config));
+  }
+}

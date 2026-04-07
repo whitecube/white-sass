@@ -3,22 +3,37 @@
 // returns the defined color in given or default color palette
 // **********************************************************
 
-@use "sass:map";
 @use "sass:list";
+@use "sass:color";
 @use "./list-concat" as *;
 @use "./str-split" as *;
 @use "../../lib/config";
 
-@function color($keys...) {
-  $mapped-keys: ("colors");
+@function color-to-rgb-values($hex) {
+  @return color.channel($hex, "red", $space: rgb), color.channel($hex, "green", $space: rgb), color.channel($hex, "blue", $space: rgb);
+}
 
-  @each $key in $keys {
-    $key: str-split($key, ".");
-    $mapped-keys: list.join($mapped-keys, $key);
+@function color-var($key, $fallback: false) {
+  $namespace: list.join(("colors"), str-split($key, "."));
+
+  @if $fallback == false {
+    @return var(--#{list-concat($namespace, "-")});
   }
 
   @return var(
-    --#{list-concat($mapped-keys, "-")},
-    config.get(list-concat($mapped-keys, "."))
+    --#{list-concat($namespace, "-")},
+    color-to-rgb-values($fallback)
   );
+}
+
+@function color($key, $opacity: false, $fallback: false) {
+  @if $opacity == false or $opacity >= 1 {
+    @return rgb(color-var($key, $fallback));
+  }
+
+  @if $opacity <= 0 {
+    @return transparent;
+  }
+  
+  @return rgba(color-var($key, $fallback), $opacity);
 }
