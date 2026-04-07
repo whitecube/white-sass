@@ -3,10 +3,8 @@
 // returns the defined color in given or default color palette
 // **********************************************************
 
-@use "sass:map";
 @use "sass:list";
 @use "sass:color";
-@use "sass:string";
 @use "./list-concat" as *;
 @use "./str-split" as *;
 @use "../../lib/config";
