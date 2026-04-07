@@ -6,6 +6,7 @@
 @use "sass:map";
 @use "sass:list";
 @use "sass:color";
+@use "sass:string";
 @use "./list-concat" as *;
 @use "./str-split" as *;
 @use "../../lib/config";
@@ -19,11 +20,11 @@
 
   @if $fallback == false {
     @return var(--#{list-concat($namespace, "-")});
-  } 
+  }
 
   @return var(
     --#{list-concat($namespace, "-")},
-    $fallback
+    color-to-rgb-values($fallback)
   );
 }
 
