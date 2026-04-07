@@ -181,38 +181,53 @@ Get the desired percentage value based of the grid you set up in your `config/_g
 }
 ```
 
-#### `color($keys...)`
+#### `color($key, $opacity: false, $fallback: false)`
 
-Get the colors based on the config, you can use it in 3 different way based on you `config/_colors.scss` file.
+Get a color defined the config, converted to RGB or RGBA (depending on `$opacity`).
+
+**Please note:** all SASS color variables are converted to CSS variables using raw RGB-values. For instance, defining `$config: ('white': #ffffff)` will generate a `--colors-white: 255, 255, 255;` CSS variable. This variable can then be used inside the `rgb()` and `rgba()` CSS functions.
 
 ```scss
-// _colors.scss simple config
+// _colors.scss example config
 $config: (
-  "white": white,
-  "black": black,
-  "grey": #f5f5f5,
+  "white": #f1f1f1,
+  "black": #000000,
+  "shade": (
+    "000": #0F2323,
+    "020": #727272,
+    "040": #b2b2b2,
+    "060": #d1d1d1,
+    "080": #ededed,
+    "100": #ffffff,
+  ),
   "text": (
-    "disabled": rebeccapurple,
+    "disabled": #727272,
+    "dark": #161616,
+    "light": #515151,
   ),
 );
 
-// _your-part-file.scss
-//Always import your tools here
+// _some-file.scss
 @use "@whitecube/jean-sass/tools" as *;
 
-// Argument based synthax
-.text-disabled {
-  color: color("text", "disabled");
+// Basic usage:
+.text {
+  color: color('text.dark'); // color: rgb(var(--colors-text-dark));
+
+  &.text--disabled {
+    color: color('text.disabled'); // color: rgb(var(--colors-text-disabled));
+  }
 }
 
-// Dotted synthax
-.text-disabled {
-  color: color("text.disabled");
+// RGBA colors:
+.box {
+  background: color('white', 0.5); // background: rgba(var(--colors-white), .5);
 }
 
-// Still dotted synthax (simple)
-.grey {
-  color: color("grey");
+// Providing fallback colors:
+.icon-user {
+  fill: color('shade.060', $fallback: #598bc6); // fill: rgb(var(--colors-shade-060, 89, 139, 198));
+  stroke: color('shade.000', 0.2, #000000); // fill: stroke(var(--colors-shade-000, 0, 0, 0), .2);
 }
 ```
 
